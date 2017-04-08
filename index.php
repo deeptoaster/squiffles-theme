@@ -6,8 +6,8 @@
     <link href="/lib/fonts/flaticon.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:800|Titillium+Web:400,700" type="text/css" rel="stylesheet" />
     <link href="/lib/css/squiffles.css" type="text/css" rel="stylesheet" />
-    <link rel="alternate" type="application/rss+xml" title="Blog - Deep Toaster &raquo; Feed" href="http://squiffl.es/blog/feed/" />
-    <link rel="alternate" type="application/rss+xml" title="Blog - Deep Toaster &raquo; Comments Feed" href="http://squiffl.es/blog/comments/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Feed" href="http://squiffl.es/blog/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Comments Feed" href="http://squiffl.es/blog/comments/feed/" />
   </head>
   <body>
     <div id="header">
@@ -28,15 +28,16 @@ while (have_posts()) {
 
   echo <<<EOF
       <div class="post">
-
+        <h2 class="post-title"><span class="date">
 EOF;
 
-  echo '        ';
+  the_date();
+  echo '</span>';
 
   if (is_single()) {
-    the_title('<h2 class="post-title">', '</h2>');
+    the_title(' ', '</h2>');
   } else {
-    the_title('<h2 class="post-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+    the_title(' <a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
   }
 
   echo <<<EOF
@@ -47,9 +48,16 @@ EOF;
 
   the_content();
   the_tags('<p>Tags: ', ', ', '</p>');
+
+  echo <<<EOF
+
+          <p>
+EOF;
+
   edit_post_link();
 
   echo <<<EOF
+          </p>
         </div>
 
 EOF;
