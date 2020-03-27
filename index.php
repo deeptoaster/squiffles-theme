@@ -3,11 +3,11 @@
   <head>
     <title>Blog - Deep Toaster</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/lib/fonts/flaticon.css" type="text/css" rel="stylesheet" />
+    <link href="/bin/fonts/flaticon.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:800|Titillium+Web:400,700" type="text/css" rel="stylesheet" />
-    <link href="/lib/css/squiffles.css" type="text/css" rel="stylesheet" />
-    <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Feed" href="http://squiffl.es/blog/feed/" />
-    <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Comments Feed" href="http://squiffl.es/blog/comments/feed/" />
+    <link href="/bin/css/squiffles.css" type="text/css" rel="stylesheet" />
+    <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Feed" href="http://fishbotwilleatyou.com/blog/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Comments Feed" href="http://fishbotwilleatyou.com/blog/comments/feed/" />
   </head>
   <body>
     <div id="header">
