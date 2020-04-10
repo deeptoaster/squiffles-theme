@@ -37,7 +37,10 @@ EOF;
   if (is_single()) {
     the_title(' ', '</h2>');
   } else {
-    the_title(' <a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+    the_title(
+      ' <a href="' . esc_url(get_permalink()) . '" rel="bookmark">',
+      '</a></h2>'
+    );
   }
 
   echo <<<EOF
