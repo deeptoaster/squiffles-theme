@@ -22,30 +22,31 @@
 <?php
 get_sidebar();
 ?>    <div id="main">
+      <dl class="timeline">
 <?php
 while (have_posts()) {
   the_post();
+  $date = get_the_date('j M');
 
   echo <<<EOF
-      <div class="post">
-        <h2 class="post-title"><span class="date">
+        <dt>$date</dt>
+        <dd>
+          <div class="post">
+            <h2 class="post-title">
 EOF;
 
-  the_date();
-  echo '</span>';
-
   if (is_single()) {
-    the_title(' ', '</h2>');
+    the_title();
   } else {
     the_title(
-      ' <a href="' . esc_url(get_permalink()) . '" rel="bookmark">',
-      '</a></h2>'
+      '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">',
+      '</a>'
     );
   }
 
   echo <<<EOF
-
-        <div class="post-content">
+</h2>
+            <div class="post-content">
 
 EOF;
 
@@ -54,14 +55,15 @@ EOF;
 
   echo <<<EOF
 
-          <p>
+              <p>
 EOF;
 
   edit_post_link();
 
   echo <<<EOF
-          </p>
-        </div>
+              </p>
+            </div>
+            <ul class="post-comments">
 
 EOF;
 
@@ -69,25 +71,28 @@ EOF;
     comments_template();
   } else {
     echo <<<EOF
-        <div class="comment">
+              <li>
 EOF;
 
     comments_popup_link();
 
     echo <<<EOF
-        </div>
+              </li>
 
 EOF;
   }
 
   echo <<<EOF
-      </div>
+            </ul>
+          </div>
+        </dd>
 
 EOF;
 }
 
 the_posts_navigation();
 ?>
+      </dl>
     </div>
   </body>
 </html>

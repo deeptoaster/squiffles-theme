@@ -1,19 +1,18 @@
 <?php
-if (have_comments()) {
-  echo <<<EOF
-        <ul class="comments">
+wp_list_comments(array(
+  'format' => 'xhtml'
+));
+
+echo <<<EOF
+              <li>
 
 EOF;
-
-  wp_list_comments(array(
-    'format' => 'html5'
-  ));
-
-  echo <<<EOF
-        </ul>
-
-EOF;
-}
 
 comment_form();
+
+echo <<<EOF
+
+              </li>
+
+EOF;
 ?>
