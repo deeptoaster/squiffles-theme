@@ -1,14 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Blog - Deep Toaster</title>
+    <title><?php
+if (is_singular()) {
+  echo the_title() . ' - ';
+}
+?>Blog - Deep Toaster</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/bin/fonts/flaticon.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:800|Titillium+Web:400,700" type="text/css" rel="stylesheet" />
     <link href="/bin/css/squiffles.css" type="text/css" rel="stylesheet" />
     <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Feed" href="http://fishbotwilleatyou.com/blog/feed/" />
     <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Comments Feed" href="http://fishbotwilleatyou.com/blog/comments/feed/" />
-  </head>
+<?php
+$permalink = esc_url(get_permalink());
+
+if (is_singular()) {
+  echo <<<EOF
+    <link rel="canonical" href="$permalink" />
+
+EOF;
+}
+?>  </head>
   <body>
     <div id="header">
       <div class="pull-right">
@@ -38,10 +51,7 @@ EOF;
   if (is_single()) {
     the_title();
   } else {
-    the_title(
-      '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">',
-      '</a>'
-    );
+    the_title("<a href=\"$permalink\" rel=\"bookmark\">", '</a>');
   }
 
   echo <<<EOF
