@@ -10,8 +10,6 @@ if (is_singular()) {
     <link href="/bin/fonts/flaticon.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:800|Titillium+Web:400,700" type="text/css" rel="stylesheet" />
     <link href="/bin/css/squiffles.css" type="text/css" rel="stylesheet" />
-    <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Feed" href="http://fishbotwilleatyou.com/blog/feed/" />
-    <link rel="alternate" type="application/rss+xml" title="Deep Toaster &raquo; Comments Feed" href="http://fishbotwilleatyou.com/blog/comments/feed/" />
 <?php
 $permalink = esc_url(get_permalink());
 
@@ -21,6 +19,8 @@ if (is_singular()) {
 
 EOF;
 }
+
+wp_head();
 ?>  </head>
   <body>
     <div id="header">
@@ -32,9 +32,13 @@ EOF;
         <a href="/">Deep Toaster</a>
       </h1>
     </div>
+    <div id="sidebar">
+      <ul>
 <?php
-get_sidebar();
-?>    <div id="main">
+dynamic_sidebar();
+?>      </ul>
+    </div>
+    <div id="main">
       <dl class="timeline">
 <?php
 while (have_posts()) {
@@ -82,11 +86,13 @@ EOF;
   } else {
     echo <<<EOF
               <li>
+                <div class="comment-respond">
 EOF;
 
     comments_popup_link();
 
     echo <<<EOF
+                </div>
               </li>
 
 EOF;
