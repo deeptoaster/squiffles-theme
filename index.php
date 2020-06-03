@@ -11,15 +11,6 @@ if (is_singular()) {
     <link href="https://fonts.googleapis.com/css?family=Raleway:800|Titillium+Web:400,700" type="text/css" rel="stylesheet" />
     <link href="/bin/css/squiffles.css" type="text/css" rel="stylesheet" />
 <?php
-$permalink = esc_url(get_permalink());
-
-if (is_singular()) {
-  echo <<<EOF
-    <link rel="canonical" href="$permalink" />
-
-EOF;
-}
-
 wp_head();
 ?>  </head>
   <body>
