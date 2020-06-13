@@ -8,8 +8,10 @@ if (is_singular()) {
 ?>Blog - Deep Toaster</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/bin/fonts/flaticon.css" type="text/css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:800|Titillium+Web:400,700" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:800%7CTitillium+Web:400,700" type="text/css" rel="stylesheet" />
     <link href="/bin/css/squiffles.css" type="text/css" rel="stylesheet" />
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-168811289-1"></script>
+    <script src="/bin/js/ga.js"></script>
 <?php
 wp_head();
 ?>  </head>
@@ -46,6 +48,7 @@ EOF;
   if (is_single()) {
     the_title();
   } else {
+    $permalink = get_permalink();
     the_title("<a href=\"$permalink\" rel=\"bookmark\">", '</a>');
   }
 
