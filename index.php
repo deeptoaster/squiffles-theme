@@ -9,7 +9,7 @@ if (is_singular()) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/bin/fonts/flaticon.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:800%7CTitillium+Web:400,700" type="text/css" rel="stylesheet" />
-    <link href="/bin/css/squiffles.css" type="text/css" rel="stylesheet" />
+    <link href="/squiffles.css" type="text/css" rel="stylesheet" />
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-168811289-1"></script>
     <script src="/bin/js/ga.js"></script>
 <?php
@@ -37,10 +37,24 @@ dynamic_sidebar();
 while (have_posts()) {
   the_post();
   $date = get_the_date('j M');
+  $categories = get_the_category();
 
   echo <<<EOF
         <dt>$date</dt>
         <dd>
+
+EOF;
+
+  foreach ($categories as $category) {
+    $category_link = get_category_link($category);
+
+    echo <<<EOF
+          <a class="post-category post-category-$category->slug" href="$category_link" rel="category">$category->name</a>
+
+EOF;
+  }
+
+  echo <<<EOF
           <div class="post">
             <h2 class="post-title">
 EOF;
@@ -67,11 +81,12 @@ EOF;
 EOF;
 
   edit_post_link();
+  $comments_id = is_single() ? ' id="comments"' : '';
 
   echo <<<EOF
               </p>
             </div>
-            <ul class="post-comments">
+            <ul$comments_id class="post-comments">
 
 EOF;
 
