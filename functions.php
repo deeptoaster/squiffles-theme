@@ -1,5 +1,5 @@
 <?
-define('SQUIFFLES_FIELD_TRELLO_CARD', 'Trello Card');
+define('Squiffles\FIELD_TRELLO_CARD', 'Trello Card');
 
 include_once(ABSPATH . '/wp-admin/includes/post.php');
 include(__DIR__ . '/../../../../lib/functions.php');
@@ -22,8 +22,8 @@ add_action('save_post', function($post_id, $post) {
     return;
   }
 
-  squiffles_attach_to_trello(
-    get_post_custom_values(SQUIFFLES_FIELD_TRELLO_CARD, $post_id),
+  Squiffles\squiffles_attach_to_trello(
+    get_post_custom_values(Squiffles\FIELD_TRELLO_CARD, $post_id),
     preg_replace(
       array('/^http:/', '/%postname%/'),
       array('https:', $postname),
